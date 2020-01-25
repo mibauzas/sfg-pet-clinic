@@ -10,7 +10,7 @@
 	
 	<groupId>com.mibauzas</groupId>
 	<artifactId>sfg-pet-clinic</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>sfg-pet-clinic</name>
 	<description>SFG pet clinic project</description>
 
@@ -45,7 +45,7 @@
 
 	<scm>
 		<developerConnection>scm:git:https://github.com/mibauzas/sfg-pet-clinic.git</developerConnection>
-	  <tag>sfg-pet-clinic-0.0.1</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 </project>
