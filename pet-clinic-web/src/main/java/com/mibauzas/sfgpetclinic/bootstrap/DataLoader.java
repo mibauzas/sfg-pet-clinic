@@ -4,8 +4,6 @@ import com.mibauzas.sfgpetclinic.model.Owner;
 import com.mibauzas.sfgpetclinic.model.Vet;
 import com.mibauzas.sfgpetclinic.services.OwnerService;
 import com.mibauzas.sfgpetclinic.services.VetService;
-import com.mibauzas.sfgpetclinic.services.map.OwnerServiceMap;
-import com.mibauzas.sfgpetclinic.services.map.VetServiceMap;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
