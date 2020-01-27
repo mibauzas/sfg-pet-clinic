@@ -3,12 +3,12 @@ package com.mibauzas.sfgpetclinic.services.map;
 import java.util.Set;
 
 import com.mibauzas.sfgpetclinic.model.Vet;
-import com.mibauzas.sfgpetclinic.services.CrudService;
+import com.mibauzas.sfgpetclinic.services.VetService;
 
 /**
  * VetServiceMap
  */
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public void delete(Vet object) {
