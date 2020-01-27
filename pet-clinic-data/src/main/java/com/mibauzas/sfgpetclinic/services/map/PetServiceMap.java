@@ -5,9 +5,12 @@ import java.util.Set;
 import com.mibauzas.sfgpetclinic.model.Pet;
 import com.mibauzas.sfgpetclinic.services.PetService;
 
+import org.springframework.stereotype.Service;
+
 /**
  * PetServiceMap
  */
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
