@@ -3,7 +3,10 @@ package com.mibauzas.sfgpetclinic.services.map;
 import java.util.Set;
 
 import com.mibauzas.sfgpetclinic.model.Owner;
+import com.mibauzas.sfgpetclinic.model.Pet;
 import com.mibauzas.sfgpetclinic.services.OwnerService;
+import com.mibauzas.sfgpetclinic.services.PetService;
+import com.mibauzas.sfgpetclinic.services.PetTypeService;
 
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+
+    private final PetTypeService petTypeService;
+    private final PetService petService;
+
+    public OwnerServiceMap(PetTypeService petTypeService, PetService petService) {
+        this.petTypeService = petTypeService;
+        this.petService = petService;
+    }
 
     @Override
     public void delete(Owner object) {
@@ -40,7 +51,28 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner save(Owner object) {
-        return super.save(object);
+        if (object != null){
+            if (object.getPets() != null){
+                object.getPets().forEach(pet -> {
+                    if (pet.getPetType()!=null){
+                        if (pet.getPetType().getId() == null){
+                            pet.setPetType(petTypeService.save(pet.getPetType()));
+                        }
+                    }else{
+                        throw new RuntimeException("Pet type is required");
+                    }
+
+                    if (pet.getId() == null){
+                        Pet savedPed = petService.save(pet);
+                        pet.setId(savedPed.getId());
+                    }
+                });
+            }
+            return super.save(object);
+        } else {
+            return null;
+        }
+        
     }
 
 }
