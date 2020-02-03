@@ -2,7 +2,9 @@ package com.mibauzas.sfgpetclinic.services.map;
 
 import java.util.Set;
 
+import com.mibauzas.sfgpetclinic.model.Speciality;
 import com.mibauzas.sfgpetclinic.model.Vet;
+import com.mibauzas.sfgpetclinic.services.SpecialityService;
 import com.mibauzas.sfgpetclinic.services.VetService;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +14,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+
+    private final SpecialityService specialityService;
+
+    public VetServiceMap(SpecialityService specialityService) {
+        this.specialityService = specialityService;
+    }
 
     @Override
     public void delete(Vet object) {
@@ -35,9 +43,15 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
+        if (object.getSpecialities().size() > 0){
+            object.getSpecialities().forEach(specialty -> {
+                if (specialty.getId() == null){
+                    Speciality savedSpeciality = specialityService.save(specialty);
+                    specialty.setId(savedSpeciality.getId());
+                }
+            });
+        }
         return super.save(object);
-    }
-
-    
+    }   
     
 }
