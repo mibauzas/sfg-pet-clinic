@@ -5,15 +5,16 @@ package com.mibauzas.sfgpetclinic.model;
  */
 public class PetType extends BaseEntity {
 
-    private String petName;
+    private String name;
 
-    public String getPetName() {
-        return petName;
+    public String getName() {
+        return name;
     }
 
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setName(String name) {
+        this.name = name;
     }
+
 
     
 }

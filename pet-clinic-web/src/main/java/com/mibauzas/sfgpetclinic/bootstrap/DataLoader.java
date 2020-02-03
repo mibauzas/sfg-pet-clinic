@@ -1,8 +1,10 @@
 package com.mibauzas.sfgpetclinic.bootstrap;
 
 import com.mibauzas.sfgpetclinic.model.Owner;
+import com.mibauzas.sfgpetclinic.model.PetType;
 import com.mibauzas.sfgpetclinic.model.Vet;
 import com.mibauzas.sfgpetclinic.services.OwnerService;
+import com.mibauzas.sfgpetclinic.services.PetTypeService;
 import com.mibauzas.sfgpetclinic.services.VetService;
 
 import org.springframework.boot.CommandLineRunner;
@@ -18,14 +20,25 @@ public class DataLoader implements CommandLineRunner {
 
     private final VetService vetService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    private final PetTypeService petTypeService;
+
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService){
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogPetService = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType savedCatPetService = petTypeService.save(cat);
         
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
