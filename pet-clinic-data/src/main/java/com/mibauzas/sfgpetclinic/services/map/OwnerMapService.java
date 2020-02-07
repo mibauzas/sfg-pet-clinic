@@ -8,12 +8,14 @@ import com.mibauzas.sfgpetclinic.services.OwnerService;
 import com.mibauzas.sfgpetclinic.services.PetService;
 import com.mibauzas.sfgpetclinic.services.PetTypeService;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 /**
  * OwnerMapService
  */
 @Service
+@Profile({"default","map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;

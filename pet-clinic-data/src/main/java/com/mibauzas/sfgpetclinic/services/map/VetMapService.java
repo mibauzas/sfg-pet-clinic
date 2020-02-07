@@ -7,12 +7,14 @@ import com.mibauzas.sfgpetclinic.model.Vet;
 import com.mibauzas.sfgpetclinic.services.SpecialityService;
 import com.mibauzas.sfgpetclinic.services.VetService;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 /**
  * VetServiceMap
  */
 @Service
+@Profile({"default","map"})
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialityService specialityService;
