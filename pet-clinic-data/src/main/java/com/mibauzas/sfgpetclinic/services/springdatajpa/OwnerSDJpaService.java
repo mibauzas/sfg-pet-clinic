@@ -1,7 +1,6 @@
 package com.mibauzas.sfgpetclinic.services.springdatajpa;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import com.mibauzas.sfgpetclinic.model.Owner;
